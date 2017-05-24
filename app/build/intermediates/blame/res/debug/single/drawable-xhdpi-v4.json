@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_gx.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\icon_gx.png"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_over.9.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\edit_over.9.png"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scan_line.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\scan_line.png"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\capture.9.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\capture.9.png"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_gx2.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\icon_gx2.png"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit.9.png",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-xhdpi\\edit.9.png"
+    }
+]

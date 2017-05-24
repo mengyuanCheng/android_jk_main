@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\detail.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\detail.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_list_item.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\main_list_item.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\simple_listview_item.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\simple_listview_item.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\netoutin.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\netoutin.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scan.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\activity_scan.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\peixiangdt_list_item.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\peixiangdt_list_item.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\peixiangdetail.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\peixiangdetail.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_wait_dialog.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\fragment_wait_dialog.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\peixiang.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\peixiang.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_handover_work.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\activity_handover_work.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\boxes_list_item.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\boxes_list_item.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_qr_scan.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\activity_qr_scan.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sacn_activity.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\sacn_activity.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\progress.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\progress.xml"
+    },
+    {
+        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_title.xml",
+        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\layout\\activity_title.xml"
+    }
+]
