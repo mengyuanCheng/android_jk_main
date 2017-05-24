@@ -1,0 +1,38 @@
+<resources>
+
+    <style name="normalText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#444</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="buttonText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="valueText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#999494</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="titleBarText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="timesText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#F47F0D</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="mainUsernameText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00A9EC</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkselect_draw_bg</item>
+    </style>
+
+
+</resources>

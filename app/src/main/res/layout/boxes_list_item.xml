@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    android:id="@+id/RelativeLayout_boxes"   
+    android:layout_width="fill_parent"   
+    xmlns:android="http://schemas.android.com/apk/res/android"   
+    android:layout_height="30dp"   
+    android:paddingBottom="4dip"   
+    android:paddingLeft="12dip"  
+    android:paddingRight="12dip"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/list_boxes_img"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/list_boxes_title"
+            style="@style/normalText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="65dp"
+            android:textSize="15sp" />
+         
+</RelativeLayout>

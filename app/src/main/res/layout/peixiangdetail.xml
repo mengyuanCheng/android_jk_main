@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#3695E2"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/px_detail_back"
+            style="@style/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="#3695E2"
+            android:text="@string/button_back" />
+
+        <TextView
+            android:id="@+id/peixiangdetail_title_view"
+            style="@style/titleBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="配箱" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@+id/px_detail_spinner"
+            style="@style/buttonText"
+            android:gravity="center"
+            android:text="面额"/>
+        <Spinner
+            android:id="@+id/px_detail_spinner"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:entries="@array/money">
+
+        </Spinner>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/px_detail_person_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/title_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/px_detail_textView_person1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:textColor="#F47F0D"
+            android:textSize="18sp"
+            android:text="人员1：" />
+        <TextView
+            android:id="@+id/px_detail_show_name1"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="20dp"
+            android:gravity="center"
+            android:textColor="@color/darkgrey"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/px_detail_textView_person1"
+            android:layout_toLeftOf="@+id/px_detail_person_scan" />
+        <TextView
+            android:id="@+id/px_detail_textView_person2"
+            android:layout_below="@+id/px_detail_textView_person1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:textColor="#F47F0D"
+            android:textSize="18sp"
+            android:text="人员2：" />
+        <TextView
+            android:id="@+id/px_detail_show_name2"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="20dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/darkgrey"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/px_detail_person_scan"
+            android:layout_toRightOf="@+id/px_detail_textView_person2"/>
+        <!-- 扫描工卡，-->
+        <Button
+            android:id="@+id/px_detail_person_scan"
+            style="@style/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FB7F2C"
+            android:layout_alignParentRight="true"
+            android:text="添加人员"
+            android:layout_margin="5dp"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/px_detail_person_layout"
+        android:background="@color/darkgrey"
+        />
+
+    <LinearLayout
+        android:id="@+id/px_detail_box_linear"
+        android:layout_below="@+id/px_detail_person_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#F47F0D"
+            android:textSize="18sp"
+            android:text="配箱号："/>
+        <TextView
+            android:id="@+id/px_detail_show_box_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            />
+            <Button
+                android:id="@+id/px_detail_scan_peixiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/buttonText"
+                android:background="#FB7F2C"
+                android:layout_marginRight="5dp"
+                android:text="扫描配箱"/>
+    </LinearLayout>
+    <View
+        android:layout_below="@+id/px_detail_box_linear"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/darkgrey"
+        />
+    <ListView
+        android:id="@+id/px_detail_listView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/px_detail_money_scan"
+        android:divider="#F2F5F7"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/px_detail_box_linear"
+        />
+    <!-- 扫描二维码 -->
+    <Button
+        android:id="@+id/px_detail_money_scan"
+        android:layout_above="@+id/px_detail_commit"
+        style="@style/buttonText"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#FB7F2C"
+        android:text="扫描钱捆" />
+    <Button
+        android:id="@+id/px_detail_commit"
+        style="@style/buttonText"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="#FB7F2C"
+        android:text="上传数据" />
+</RelativeLayout>
