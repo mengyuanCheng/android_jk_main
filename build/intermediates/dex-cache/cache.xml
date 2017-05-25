@@ -3,48 +3,48 @@
 
     <item
         is-multidex="false"
-        jar="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\libs\platform_sdk_v2.2.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="0498fc6a0086eae4a3a06eac5041acae362fffa1">
-        <dex dex="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\build\intermediates\pre-dexed\debug\platform_sdk_v2.2.3_a7141b7003b631fc4c7b02d9fe020e2da17a792c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\libs\BaiduLBS_Android.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="acfbcde76c49e15a1c4bdfaf56ce599e6b7501c3">
-        <dex dex="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_09a78e6c88d33345dd5555db3bc65ee9fc38ee7e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\libs\UhfLib.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="d00fa6b028dd2559f5e497d6816650daa0b5a3e9">
-        <dex dex="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\build\intermediates\pre-dexed\debug\UhfLib_48572ebf7c4c3b99d0db407541d70afb845b6a35.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
-        <dex dex="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\build\intermediates\pre-dexed\debug\gson-2.8.0_93ddd6f8eed7e01ec83911fb2c6579a735e57853.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lenovo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.0.0\support-v4-19.0.0.jar"
+        jar="D:\Google\AndroidSDK\extras\android\m2repository\com\android\support\support-v4\19.0.0\support-v4-19.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="afee690af14bd2c32d400cdf78e746fd45c386fa">
-        <dex dex="D:\Develop\workspaces\AndroidStudio\android_jk_main\app\build\intermediates\pre-dexed\debug\support-v4-19.0.0_0cc54a81b5aeda7ac444d282ddda05d9f18ef14a.jar" />
+        <dex dex="E:\workspaces\androidstudio\android_jk(ms)\app\build\intermediates\pre-dexed\debug\support-v4-19.0.0_ed1fc1dda118a7d64204f9801201d5bfb88b7684.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspaces\androidstudio\android_jk(ms)\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="acfbcde76c49e15a1c4bdfaf56ce599e6b7501c3">
+        <dex dex="E:\workspaces\androidstudio\android_jk(ms)\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_be2c599c581c1b98987b804974530c30ed5dbb90.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="E:\workspaces\androidstudio\android_jk(ms)\app\build\intermediates\pre-dexed\debug\gson-2.8.0_4f4ff1cf61174743e4574eab8dc93d00100afda8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspaces\androidstudio\android_jk(ms)\app\libs\platform_sdk_v2.2.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="0498fc6a0086eae4a3a06eac5041acae362fffa1">
+        <dex dex="E:\workspaces\androidstudio\android_jk(ms)\app\build\intermediates\pre-dexed\debug\platform_sdk_v2.2.3_3875ea6639984af6e502a2bb2b22d837972f8741.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspaces\androidstudio\android_jk(ms)\app\libs\UhfLib.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d00fa6b028dd2559f5e497d6816650daa0b5a3e9">
+        <dex dex="E:\workspaces\androidstudio\android_jk(ms)\app\build\intermediates\pre-dexed\debug\UhfLib_1434ae1dd6e1dbc5b67ed5b21ef2defbe70499c9.jar" />
     </item>
 
 </items>
