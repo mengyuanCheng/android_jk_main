@@ -17,10 +17,13 @@
 
         <Button
             android:id="@+id/px_detail_back"
-            style="@style/buttonText"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:background="#3695E2"
             android:text="@string/button_back" />
 
@@ -32,7 +35,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="配箱" />
+            android:text="配袋" />
 
         <Spinner
             android:id="@+id/px_detail_spinner"
@@ -63,7 +66,7 @@
             android:gravity="center"
             android:textColor="#F47F0D"
             android:textSize="18sp"
-            android:text="人员1：" />
+            android:text="装袋人：" />
         <TextView
             android:id="@+id/px_detail_show_name1"
             android:layout_width="fill_parent"
@@ -84,7 +87,7 @@
             android:gravity="center"
             android:textColor="#F47F0D"
             android:textSize="18sp"
-            android:text="人员2：" />
+            android:text="复核人：" />
         <TextView
             android:id="@+id/px_detail_show_name2"
             android:layout_width="fill_parent"
@@ -128,7 +131,7 @@
             android:layout_marginLeft="10dp"
             android:textColor="#F47F0D"
             android:textSize="18sp"
-            android:text="配箱号："/>
+            android:text="配袋号："/>
         <TextView
             android:id="@+id/px_detail_show_box_name"
             android:layout_width="0dp"
