@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 用于显示钱的面额-->
+    <string-array name="money">
+        <item>100</item>
+        <item>50</item>
+        <item>20</item>
+        <item>10</item>
+    </string-array>
+</resources>

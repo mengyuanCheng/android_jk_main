@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#3695E2"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/detail_btn_back"
+            style="@style/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="#3695E2"
+            android:text="@string/button_back" />
+
+        <TextView
+            android:id="@+id/detail_title_view"
+            style="@style/titleBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/detail_title" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/detail_btn_commit_n"
+        style="@style/buttonText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:background="#FB7F2C"
+        android:text="@string/button_operate_2" />
+
+    <Button
+        android:id="@+id/Button01"
+        style="@style/buttonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginLeft="26dp"
+        android:layout_toRightOf="@+id/button1"
+        android:text="@string/button_operate_4" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/buttonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/detail_remark"
+        android:layout_below="@+id/title_layout"
+        android:layout_marginLeft="50dp"
+        android:text="@string/button_operate_3" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/timesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/detail_person1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/timesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:layout_toLeftOf="@+id/Button01"
+        android:gravity="center"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/textView_person2"
+        style="@style/timesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:gravity="center"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/timesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/Button01"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/detail_person2" />
+
+    <ListView
+        android:id="@+id/ListView_boxs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/detail_remark"
+        android:layout_below="@+id/textView1"
+        android:divider="#F2F5F7"
+        android:dividerHeight="1dp" />
+    <EditText
+        android:id="@+id/detail_remark"
+        style="@style/normalText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/detail_btn_commit_n"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:background="#F4F4F4"
+        android:ems="10"
+        android:gravity="left|top"
+        android:hint="@string/detail_remark_hint"
+        android:inputType="textMultiLine"
+        android:minLines="2" />
+
+</RelativeLayout>

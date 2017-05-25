@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/main_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#3695E2">
+
+        <TextView
+            android:id="@+id/main_title_view"
+            style="@style/titleBarText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/main_title" />
+
+        <!--<ImageView-->
+        <!--android:id="@+id/saosao_button"-->
+        <!--android:layout_width="78dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="10dip"-->
+        <!--android:contentDescription="@string/app_name"-->
+        <!--android:src="@drawable/out" />-->
+
+        <Button
+            android:id="@+id/popupmenu_btn"
+            style="@style/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:background="#3695E2"
+            android:onClick="popupmenu"
+            android:text="弹出菜单" />
+
+        <Button
+            android:id="@+id/main_btn_back"
+            style="@style/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="#3695E2"
+            android:text="@string/button_back" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/ListView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#F2F5F7"
+        android:dividerHeight="8dp" />
+
+</LinearLayout>

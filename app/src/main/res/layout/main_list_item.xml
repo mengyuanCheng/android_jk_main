@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    android:id="@+id/RelativeLayout01"   
+    android:layout_width="fill_parent"   
+    xmlns:android="http://schemas.android.com/apk/res/android"   
+    android:layout_height="80dp"   
+    android:paddingBottom="4dip"   
+    android:paddingLeft="12dip"  
+    android:paddingRight="12dip"
+    android:background="#ffffff">
+    <ImageView
+        android:id="@+id/list_img"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+        <TextView
+            android:id="@+id/list_title"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="65dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+             style="@style/normalText"
+        />
+         <TextView 
+            android:id="@+id/list_position"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="65dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_title" 
+            android:textSize="12sp"
+            style="@style/valueText"
+            />
+          <TextView 
+            android:id="@+id/list_worktime"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="65dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_position" 
+            android:textSize="12sp"
+            style="@style/valueText"
+            />
+         
+</RelativeLayout>
