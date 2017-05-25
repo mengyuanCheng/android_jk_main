@@ -1,98 +1,26 @@
 [
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\task_2.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\task_2.png"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_head.jpg",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\default_head.jpg"
     },
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\boxes_list_status_2.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\boxes_list_status_2.png"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\logn.jpg",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\logn.jpg"
     },
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_list_item.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\icon_list_item.png"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\background_login_div_bg.xml",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\background_login_div_bg.xml"
     },
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\previous.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\previous.png"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\login_logo.jpg",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\login_logo.jpg"
     },
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\background_login_div_bg.xml",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\background_login_div_bg.xml"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\app_icon.jpg",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\app_icon.jpg"
     },
     {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\boxes_list_status_3.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\boxes_list_status_3.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\app_icon.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\app_icon.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_man.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\icon_man.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_right.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\arrow_right.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\detail_list_num_bg.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\detail_list_num_bg.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\boxes_list_status_1.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\boxes_list_status_1.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\task_icon_1.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\task_icon_1.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\detail_list_status_abnormal.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\detail_list_status_abnormal.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\login_logo.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\login_logo.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\logn.jpg",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\logn.jpg"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\detail_list_status_normal.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\detail_list_status_normal.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\loading.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\loading.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\task_1.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\task_1.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\add_photo.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\add_photo.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_head.jpg",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\default_head.jpg"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_lock.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\icon_lock.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\background_login.xml",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\background_login.xml"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\task_normal.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\task_normal.png"
-    },
-    {
-        "merged": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\task_icon_2.png",
-        "source": "E:\\workspaces\\androidstudio\\android_jk(ms)\\app\\src\\main\\res\\drawable-mdpi\\task_icon_2.png"
+        "merged": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\background_login.xml",
+        "source": "D:\\Develop\\workspaces\\AndroidStudio\\android_jk_main\\app\\src\\main\\res\\drawable-mdpi\\background_login.xml"
     }
 ]

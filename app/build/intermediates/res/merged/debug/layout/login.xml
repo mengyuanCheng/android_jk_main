@@ -56,14 +56,6 @@
         </CheckBox>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/miniTwitter_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/content_layout"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/login_logo" />
-
     <!-- 登录button -->
 
     <Button
@@ -84,5 +76,15 @@
         android:layout_marginTop="10dp"
         android:textSize="14sp" 
         android:text="@string/login_label_version"/>
+
+    <ImageView
+        android:layout_marginBottom="40dp"
+        android:id="@+id/miniTwitter_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/login_logo"
+        android:layout_above="@+id/content_layout"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
