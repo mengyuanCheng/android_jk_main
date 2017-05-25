@@ -148,6 +148,7 @@
     <string name="button_operate_3">连接设备</string>
     <string name="button_operate_4">启动扫描</string>
     <string name="close">Stop Scan</string>
+    <string name="data_commot">保存信息</string>
     <string name="detail_branch_address">网点地址</string>
     <string name="detail_branch_contact">网点联系人</string>
     <string name="detail_branch_name">网点名称</string>
@@ -201,6 +202,8 @@
     <string name="se4500">Se4500</string>
     <string name="set_scanner_manager">Set Continuous Mode</string>
     <string name="start">Start Scan</string>
+    <string name="start_scan">开始扫描</string>
+    <string name="stop_scan">停止扫描</string>
     <string name="symbol">Symbol</string>
     <string name="title_activity_main">Scanner</string>
     <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">

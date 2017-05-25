@@ -33,13 +33,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="配箱" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/px_detail_spinner"
-            style="@style/buttonText"
-            android:gravity="center"
-            android:text="面额"/>
+
         <Spinner
             android:id="@+id/px_detail_spinner"
             android:layout_width="wrap_content"
@@ -47,7 +41,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:gravity="center"
-            android:entries="@array/money">
+            android:entries="@array/money"
+            android:visibility="gone">
 
         </Spinner>
 

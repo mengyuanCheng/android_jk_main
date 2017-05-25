@@ -157,7 +157,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 }
                 final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
                         + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
-                        + "&moneyAmount=" + moneyAmount + "&list=" + arraylist;
+                        +  "&list=" + arraylist;
 
                 /*final String params = "employee1=" + "safafassa" + "&employee1_rfid=" + "654531237"
                         + "&employee2=" + "zxalsfasvfa" + "&employee2_rfid=" + "54316542"

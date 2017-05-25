@@ -2,7 +2,9 @@ package com.grgbanking.ct;
 
 import android.accounts.NetworkErrorException;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -149,10 +151,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 break;
             //TODO 扫描配箱
             case R.id.px_detail_scan_peixiang:
-                Intent pxIntent = new Intent(PeixiangdtActivity.this, ScanActivity.class);
-                pxIntent.setFlags(ScanActivity.FLAG_PX_PXNAME);
-                startActivityForResult(pxIntent, ScanActivity.FLAG_PX_PXNAME);
-                if (UfhData.isDeviceOpen()) UhfGetData.CloseUhf(); //跳转页面前，结束连接
+                scanPeiXiang();
                 break;
             case R.id.px_detail_money_scan:
                 Intent intent = new Intent(PeixiangdtActivity.this, ScanActivity.class);
@@ -162,50 +161,16 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 break;
             //TODO 提交数据到服务器
             case R.id.px_detail_commit:
-                String arraylist = gson.toJson(mArrayList);
-                Log.e("钱捆list列表----->",arraylist);
-                if(bankEmployee1 == null || bankEmployee2 == null || pxName.isEmpty() || mArrayList.size() == 0) {
-                    Toast.makeText(PeixiangdtActivity.this,"数据不完整，无法提交！",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
-                        + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
-                        + "&pxName=" + pxName + "&moneyAmount=" + moneyAmount + "&list=" + arraylist;
+                commitData();
 
-                Log.i("params--->",params);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            //获取返回信息
-                            String responseContent = HttpUtils.
-                                    doPost(Constants.URL_DATA_COMMIT, params);
-                            Log.i("获取到的返回信息是 ------>", responseContent);
-                            ResultInfo resultInfo = gson.fromJson(responseContent,ResultInfo.class);
-                            Message message = Message.obtain();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("code",resultInfo.getCode());
-                            bundle.putString("message",resultInfo.getMessage());
-                            message.what = MSG_DATA_COMMIT;
-                            message.setData(bundle);
-                            mHandler.sendMessage(message);
-                        } catch (NetworkErrorException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
-                //提示用户正在登陆，不允许其进行操作
-                waitDialogFragment = new WaitDialogFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("noteMsg", "正在提交数据请稍后");
-                waitDialogFragment.setArguments(bundle);
-                waitDialogFragment.setCancelable(false);
-                waitDialogFragment.show(getFragmentManager(), "dialogFragment");
                 break;
             default:
                 break;
         }
     }
+
+
+
 
     private int tty_speed = 57600;
     private byte addr = (byte) 0xff;
@@ -358,6 +323,19 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     for (String s : list) {
                         if (!mArrayList.contains(s) && mArrayList.size() <= 20) {
                             mArrayList.add(s);
+                        }else{
+                            new AlertDialog.Builder(mContext)
+                                    .setMessage("提示")
+                                    .setMessage("列表已满，是否确认提交？")
+                                    .setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            //TODO 提交数据
+                                            commitData();
+                                        }
+                                    })
+                                    .setNegativeButton("取消",null)
+                                    .show();
                         }
                     }
                     arrayAdapter.notifyDataSetChanged();
@@ -435,11 +413,17 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     employeeName.setEmployeeName(bundle.getString("name"));
                     employeeName.setRfid(bundle.getString("rfid"));
                     if (employeeName.getCode().equals(ResultInfo.CODE_SUCCESS)) {
-
                         if (bankEmployee1 != null) {
-                            bankEmployee2 = employeeName;
-                            pxDetailPersonName2.setText(bankEmployee2.getEmployeeName());
-                            break;
+                            if(bankEmployee1.getRfid().equals(employeeName.getRfid())){
+                                Toast.makeText(mContext,"人员重复，请重新扫描！",Toast.LENGTH_SHORT).show();
+                                break;
+                            }else {
+                                bankEmployee2 = employeeName;
+                                pxDetailPersonName2.setText(bankEmployee2.getEmployeeName());
+                                //TODO 跳转到扫描配箱号
+                                scanPeiXiang();
+                                break;
+                            }
                         }
                         bankEmployee1 = employeeName;
                         pxDetailPersonName1.setText(bankEmployee1.getEmployeeName());
@@ -477,4 +461,51 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
         }
     };
 
+    private void scanPeiXiang() {
+        Intent pxIntent = new Intent(PeixiangdtActivity.this, ScanActivity.class);
+        pxIntent.setFlags(ScanActivity.FLAG_PX_PXNAME);
+        startActivityForResult(pxIntent, ScanActivity.FLAG_PX_PXNAME);
+        if (UfhData.isDeviceOpen()) UhfGetData.CloseUhf(); //跳转页面前，结束连接
+    }
+    private void commitData() {
+        String arraylist = gson.toJson(mArrayList);
+        Log.e("钱捆list列表----->",arraylist);
+        if(bankEmployee1 == null || bankEmployee2 == null || pxName.isEmpty() || mArrayList.size() == 0) {
+            Toast.makeText(PeixiangdtActivity.this,"数据不完整，无法提交！",Toast.LENGTH_LONG).show();
+            return;
+        }
+        final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
+                + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
+                + "&pxName=" + pxName + "&list=" + arraylist;
+
+        Log.i("params--->",params);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //获取返回信息
+                    String responseContent = HttpUtils.
+                            doPost(Constants.URL_DATA_COMMIT, params);
+                    Log.i("获取到的返回信息是 ------>", responseContent);
+                    ResultInfo resultInfo = gson.fromJson(responseContent,ResultInfo.class);
+                    Message message = Message.obtain();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("code",resultInfo.getCode());
+                    bundle.putString("message",resultInfo.getMessage());
+                    message.what = MSG_DATA_COMMIT;
+                    message.setData(bundle);
+                    mHandler.sendMessage(message);
+                } catch (NetworkErrorException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        //提示用户正在登陆，不允许其进行操作
+        waitDialogFragment = new WaitDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("noteMsg", "正在提交数据请稍后");
+        waitDialogFragment.setArguments(bundle);
+        waitDialogFragment.setCancelable(false);
+        waitDialogFragment.show(getFragmentManager(), "dialogFragment");
+    }
 }

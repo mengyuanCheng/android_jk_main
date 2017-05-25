@@ -36,17 +36,17 @@
         android:id="@+id/scan_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开始扫描"
+        android:text="@string/start_scan"
         android:contentDescription="保存信息"/>
     <Button
         android:id="@+id/scan_stop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="关闭扫描" />
+        android:text="@string/stop_scan" />
     <Button
         android:id="@+id/scan_data_commit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="保存信息" />
+        android:text="@string/data_commot" />
 
 </LinearLayout>

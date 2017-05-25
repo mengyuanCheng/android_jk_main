@@ -34,13 +34,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="人行端交接" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/hw_spinner"
-            style="@style/buttonText"
-            android:gravity="center"
-            android:text="面额"/>
+
         <Spinner
             android:id="@+id/hw_spinner"
             android:layout_width="wrap_content"
@@ -48,6 +42,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:gravity="center"
+            android:visibility="gone"
             android:entries="@array/money">
 
         </Spinner>
