@@ -18,10 +18,11 @@
 
         <Button
             android:id="@+id/hw_back"
-            style="@style/buttonText"
+            android:textSize="16sp"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             android:background="#3695E2"
             android:text="@string/button_back" />
 
@@ -86,7 +87,7 @@
             android:gravity="center"
             android:textColor="#F47F0D"
             android:textSize="18sp"
-            android:text="网点人员：" />
+            android:text="银行人员：" />
         <TextView
             android:id="@+id/hw_show_name2"
             android:layout_width="fill_parent"
@@ -103,11 +104,12 @@
             android:id="@+id/hw_person_scan"
             style="@style/buttonText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#FB7F2C"
             android:layout_alignParentRight="true"
             android:text="添加人员"
             android:layout_margin="5dp"
+            android:padding="5dp"
             />
     </RelativeLayout>
     <View
@@ -143,9 +145,7 @@
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_margin="5dp"
         android:background="#FB7F2C"
         android:text="上传数据" />
 </RelativeLayout>

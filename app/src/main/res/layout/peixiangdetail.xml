@@ -104,8 +104,9 @@
             android:id="@+id/px_detail_person_scan"
             style="@style/buttonText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#FB7F2C"
+            android:padding="5dp"
             android:layout_alignParentRight="true"
             android:text="添加人员"
             android:layout_margin="5dp"
@@ -143,8 +144,9 @@
             <Button
                 android:id="@+id/px_detail_scan_peixiang"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 style="@style/buttonText"
+                android:padding="5dp"
                 android:background="#FB7F2C"
                 android:layout_marginRight="5dp"
                 android:text="扫描配箱"/>
@@ -181,9 +183,7 @@
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_margin="5dp"
         android:background="#FB7F2C"
         android:text="上传数据" />
 </RelativeLayout>

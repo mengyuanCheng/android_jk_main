@@ -55,7 +55,7 @@
         android:layout_height="100dp"
         android:background="#FB7F2C"
         android:gravity="center"
-        android:text="配箱"
+        android:text="配袋"
         android:layout_marginTop="22dp"
         android:layout_below="@+id/title_layout"
          />
