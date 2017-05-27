@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +22,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.google.gson.Gson;
 import com.grgbanking.ct.entity.EmployeeName;
 import com.grgbanking.ct.http.ResultInfo;
@@ -32,7 +30,6 @@ import com.grgbanking.ct.rfid.UfhData.UhfGetData;
 import com.grgbanking.ct.utils.HttpUtils;
 import com.grgbanking.ct.utils.ScanActivity;
 import com.grgbanking.ct.utils.WaitDialogFragment;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -141,7 +138,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
             case R.id.px_detail_person_scan:
                 if (!UfhData.isDeviceOpen()) {
                     connectDevice();
-                    break;
+                    if(!UfhData.isDeviceOpen()) break;
                 }
                 if (pxDetailScanPerson.getText().toString().equals("添加人员")) {
                     startScan();
@@ -162,7 +159,6 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
             //TODO 提交数据到服务器
             case R.id.px_detail_commit:
                 commitData();
-
                 break;
             default:
                 break;
@@ -182,7 +178,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
         int result = UhfGetData.OpenUhf(tty_speed, addr, 4, 1, null);
         if (result == 0) {
             UfhData.UhfGetData.GetUhfInfo();
-            Toast.makeText(PeixiangdtActivity.this, "连接设备成功,请继续操作", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PeixiangdtActivity.this, "连接设备成功！", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(PeixiangdtActivity.this, "连接设备失败，请关闭程序重新登录", Toast.LENGTH_LONG).show();
         }

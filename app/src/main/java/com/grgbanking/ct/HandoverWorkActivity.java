@@ -4,9 +4,9 @@ import android.accounts.NetworkErrorException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -27,9 +27,7 @@ import com.grgbanking.ct.utils.HttpUtils;
 import com.grgbanking.ct.utils.ScanActivity;
 import com.grgbanking.ct.utils.WaitDialogFragment;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Timer;
@@ -124,7 +122,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
             case R.id.hw_person_scan:
                 if (!UfhData.isDeviceOpen()) {
                     connectDevice();
-                    break;
+                    if(!UfhData.isDeviceOpen()) break;
                 }
                 if (btnScanPerson.getText().toString().equals("添加人员")) {
                     startScan();

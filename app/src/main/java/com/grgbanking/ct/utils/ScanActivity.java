@@ -18,9 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,6 @@ import com.grgbanking.ct.PeixiangdtActivity;
 import com.grgbanking.ct.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ScanActivity extends Activity implements OnClickListener {
     /*
@@ -103,7 +100,9 @@ public class ScanActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.sacn_activity);
+
         mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         setupView();
 

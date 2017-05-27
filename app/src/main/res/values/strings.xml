@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">华联创通</string>
+    <string name="app_name">CFSS</string>
     <string name="login_username_hint">请输入帐号</string>
     <string name="login_password_hint">请输入密码</string>
     <string name="login_remember_password">记住密码</string>

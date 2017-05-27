@@ -56,7 +56,7 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-.gitignore
+
 app/build/generated/assets/
 app/build/generated/res/
 app/build/generated/source/aidl/
