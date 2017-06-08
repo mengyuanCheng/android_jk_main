@@ -46,8 +46,6 @@
     <string name="start_scan">开始扫描</string>
     <string name="stop_scan">停止扫描</string>
     <string name="data_commot">保存信息</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <string name="hello_world">Hello world!</string>
@@ -79,5 +77,16 @@
     <string name="scanner_reset_def_summary">Reset the scanner device</string>
     <string name="scanner_toast">Scanner reset finished!</string>
     <string name="scanner_hint">At the barcode and press the scan button on the device for bar code</string>
-
+    <!-- 人行端交接页面 -->
+    <string name="handover_PBC_handover">人行端交接</string>
+    <string name="handover_PBC_staff">人行人员：</string>
+    <string name="handover_Bank_staff">银行人员：</string>
+    <string name="handover_add_staff">添加人员</string>
+    <string name="handover_scan_peixiang">扫描配箱</string>
+    <string name="handover_commit_data">上传数据</string>
+    <!-- 清分场地交接页面-->
+    <string name="handover_YinYan_handover">交接页面</string>
+    <string name="handover_YinYan_staff">银雁人员：</string>
+    <string name="handover_YinYan_scanBox">扫描交接款箱</string>
+    <string name="title_activity_container_handover">ContainerHandoverActivity</string>
 </resources>

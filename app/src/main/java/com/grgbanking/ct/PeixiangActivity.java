@@ -1,7 +1,6 @@
 package com.grgbanking.ct;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import com.grgbanking.ct.rfid.UfhData;
 import com.grgbanking.ct.rfid.UfhData.UhfGetData;
-import com.grgbanking.ct.utils.ScanActivity;
 
 /**
  * Created by Administrator on 2016/7/13.
@@ -24,10 +22,9 @@ public class PeixiangActivity extends Activity implements View.OnClickListener {
 
     private Button pxBack;   //返回button
     private Button pxButton; //配箱button
-
+    private Button pxHandover;  //交接页面
     private long firstTime = 0;   //第一次点击返回键的时间
     Context mContext;
-
 
 
     @Override
@@ -35,29 +32,31 @@ public class PeixiangActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.peixiang);
 
+        mContext = PeixiangActivity.this;
         pxBack = (Button) findViewById(R.id.net_sysout_view);
         pxButton = (Button) findViewById(R.id.peixiang_button);
-        mContext = PeixiangActivity.this;
+        pxHandover = (Button) findViewById(R.id.peixiang_handover_button);
 
         // 返回button 点击事件
         pxBack.setOnClickListener(this);
 
         // 配箱button 点击事件
         pxButton.setOnClickListener(this);
-        // 二维码扫描 button 点击事件
+        // 配箱交接页面 点击跳转
+        pxHandover.setOnClickListener(this);
     }
 
     /**
      * 根据不同 button 的 id 做相应的操作
      *
-     * @param v   switch(v.id)
+     * @param v switch(v.id)
      */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             //返回 button
             case R.id.net_sysout_view:
-                if(UfhData.isDeviceOpen()){
+                if (UfhData.isDeviceOpen()) {
                     UhfGetData.CloseUhf();
                 }
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -66,11 +65,13 @@ public class PeixiangActivity extends Activity implements View.OnClickListener {
             // 配箱 button
             case R.id.peixiang_button:
                 Intent intent = new Intent();
-                intent.setClass(PeixiangActivity.this, PeixiangdtActivity.class);
+                intent.setClass(mContext, PeixiangdtActivity.class);
                 startActivity(intent);
                 break;
-            //二维码扫描 button
-
+            //配箱交接 button
+            case R.id.peixiang_handover_button:
+                startActivity(new Intent(mContext, ContainerHandoverActivity.class));
+                break;
             default:
                 break;
         }
@@ -88,7 +89,7 @@ public class PeixiangActivity extends Activity implements View.OnClickListener {
                         Toast.LENGTH_SHORT).show();
                 firstTime = System.currentTimeMillis();
             } else {
-                if (UfhData.isDeviceOpen()){
+                if (UfhData.isDeviceOpen()) {
                     UhfGetData.CloseUhf();
                 }
                 System.exit(0);
@@ -97,7 +98,6 @@ public class PeixiangActivity extends Activity implements View.OnClickListener {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 
 }

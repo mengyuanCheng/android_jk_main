@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.grgbanking.ct.HandoverWorkActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                tools:context="com.grgbanking.ct.HandoverWorkActivity">
     <RelativeLayout
-        android:id="@+id/hw_title_layout"
+        android:id="@+id/container_hw_title_layout"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#3695E2"
@@ -17,7 +17,7 @@
         android:layout_alignParentStart="true">
 
         <Button
-            android:id="@+id/hw_back"
+            android:id="@+id/container_hw_back"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
@@ -27,38 +27,36 @@
             android:text="@string/button_back" />
 
         <TextView
-            android:id="@+id/hw_title_view"
+            android:id="@+id/container_hw_title_view"
             style="@style/titleBarText"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="@string/handover_PBC_handover" />
-
+            android:text="@string/handover_YinYan_handover" />
         <Spinner
-        android:id="@+id/hw_spinner"
-        android:layout_width="wrap_content"
-        android:padding="5dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:visibility="gone"
-        android:entries="@array/money">
-
+            android:id="@+id/container_hw_spinner"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:entries="@array/money">
         </Spinner>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/hw_person_layout"
+        android:id="@+id/container_hw_person_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/hw_title_layout"
+        android:layout_below="@+id/container_hw_title_layout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <TextView
-            android:id="@+id/hw_person1"
+            android:id="@+id/container_hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
@@ -67,7 +65,7 @@
             android:textSize="18sp"
             android:text="@string/handover_PBC_staff" />
         <TextView
-            android:id="@+id/hw_show_name1"
+            android:id="@+id/container_hw_show_name1"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:paddingLeft="20dp"
@@ -75,21 +73,21 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/hw_person1"
-            android:layout_toEndOf="@+id/hw_person1"
-            android:layout_toLeftOf="@+id/hw_person_scan"/>
+            android:layout_toRightOf="@+id/container_hw_person1"
+            android:layout_toEndOf="@+id/container_hw_person1"
+            android:layout_toLeftOf="@+id/container_hw_person_scan"/>
         <TextView
-            android:id="@+id/hw_person2"
-            android:layout_below="@+id/hw_person1"
+            android:id="@+id/container_hw_person2"
+            android:layout_below="@+id/container_hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:gravity="center"
             android:textColor="#F47F0D"
             android:textSize="18sp"
-            android:text="@string/handover_Bank_staff" />
+            android:text="@string/handover_YinYan_staff" />
         <TextView
-            android:id="@+id/hw_show_name2"
+            android:id="@+id/container_hw_show_name2"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:paddingLeft="20dp"
@@ -97,11 +95,11 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/hw_person_scan"
-            android:layout_toRightOf="@+id/hw_person2"/>
+            android:layout_toLeftOf="@+id/container_hw_person_scan"
+            android:layout_toRightOf="@+id/container_hw_person2"/>
         <!-- 扫描工卡，-->
         <Button
-            android:id="@+id/hw_person_scan"
+            android:id="@+id/container_hw_person_scan"
             style="@style/buttonText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -115,32 +113,32 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_below="@+id/hw_person_layout"
+        android:layout_below="@+id/container_hw_person_layout"
         android:background="@color/darkgrey"
         android:id="@+id/view" />
 
     <ListView
-        android:id="@+id/hw_listView"
+        android:id="@+id/container_hw_listView"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/hw_money_scan"
+        android:layout_above="@+id/container_hw_money_scan"
         android:divider="#F2F5F7"
         android:dividerHeight="1dp"
-        android:layout_below="@+id/hw_person_layout"
+        android:layout_below="@+id/container_hw_person_layout"
         />
     <!-- 扫描二维码 -->
     <Button
-        android:id="@+id/hw_money_scan"
-        android:layout_above="@+id/hw_commit"
+        android:id="@+id/container_hw_money_scan"
+        android:layout_above="@+id/container_hw_commit"
         style="@style/buttonText"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:background="#FB7F2C"
-        android:text="@string/handover_scan_peixiang" />
+        android:text="@string/handover_YinYan_scanBox" />
     <Button
-        android:id="@+id/hw_commit"
+        android:id="@+id/container_hw_commit"
         style="@style/buttonText"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
@@ -149,3 +147,4 @@
         android:background="#FB7F2C"
         android:text="@string/handover_commit_data" />
 </RelativeLayout>
+

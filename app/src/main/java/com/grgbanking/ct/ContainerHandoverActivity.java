@@ -33,8 +33,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HandoverWorkActivity extends Activity implements View.OnClickListener {
-
+public class ContainerHandoverActivity extends Activity implements View.OnClickListener {
     private Context mContext;
     private Button btnBack;  //返回按钮
     private Button btnScanPerson;  //扫描人员信息
@@ -65,13 +64,12 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
     private String moneyAmount; //面额  需上传
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_handover_work);
-        mContext = HandoverWorkActivity.this;
+        setContentView(R.layout.activity_container_handover);
+        mContext = ContainerHandoverActivity.this;
         findViewById();
         arrayAdapter = new ArrayAdapter(this, R.layout.simple_listview_item,
                 R.id.listView_item_textView, mArrayList);
@@ -80,15 +78,15 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
     }
 
     private void findViewById() {
-        btnBack = (Button) findViewById(R.id.hw_back);
+        btnBack = (Button) findViewById(R.id.container_hw_back);
         btnBack.setOnClickListener(this);
-        btnScanPerson = (Button) findViewById(R.id.hw_person_scan);
+        btnScanPerson = (Button) findViewById(R.id.container_hw_person_scan);
         btnScanPerson.setOnClickListener(this);
-        btnScanPeiXiang = (Button) findViewById(R.id.hw_money_scan);
+        btnScanPeiXiang = (Button) findViewById(R.id.container_hw_money_scan);
         btnScanPeiXiang.setOnClickListener(this);
-        btnCommit = (Button) findViewById(R.id.hw_commit);
+        btnCommit = (Button) findViewById(R.id.container_hw_commit);
         btnCommit.setOnClickListener(this);
-        spinner = (Spinner) findViewById(R.id.hw_spinner);
+        spinner = (Spinner) findViewById(R.id.container_hw_spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,17 +99,17 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
 
             }
         });
-        tvPersonName1 = (TextView) findViewById(R.id.hw_show_name1);
-        tvPersonName2 = (TextView) findViewById(R.id.hw_show_name2);
-        pxListView = (ListView) findViewById(R.id.hw_listView);
+        tvPersonName1 = (TextView) findViewById(R.id.container_hw_show_name1);
+        tvPersonName2 = (TextView) findViewById(R.id.container_hw_show_name2);
+        pxListView = (ListView) findViewById(R.id.container_hw_listView);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             /*返回操作*/
-            case R.id.hw_back:
+            case R.id.container_hw_back:
                 if (btnBack.getText().toString().equals("停止扫描")) {
                     Toast.makeText(mContext, "请先停止扫描", Toast.LENGTH_SHORT).show();
                 } else {
@@ -119,10 +117,11 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 }
                 break;
             /*扫描人员信息*/
-            case R.id.hw_person_scan:
+            case R.id.container_hw_person_scan:
                 if (!UfhData.isDeviceOpen()) {
                     connectDevice();
-                    if(!UfhData.isDeviceOpen()) break;
+                    if (!UfhData.isDeviceOpen())
+                        break;
                 }
                 if (btnScanPerson.getText().toString().equals("添加人员")) {
                     startScan();
@@ -131,14 +130,15 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 }
                 break;
             /*扫描peixing信息*/
-            case R.id.hw_money_scan:
+            case R.id.container_hw_money_scan:
                 Intent intent = new Intent(mContext, ScanActivity.class);
                 intent.setFlags(ScanActivity.FLAG_PX_DETAIL);
                 startActivityForResult(intent, ScanActivity.FLAG_PX_DETAIL);
-                if (UfhData.isDeviceOpen()) UfhData.UhfGetData.CloseUhf(); //跳转页面前结束连接
+                if (UfhData.isDeviceOpen())
+                    UfhData.UhfGetData.CloseUhf(); //跳转页面前结束连接
                 break;
             /* 提交数据*/
-            case R.id.hw_commit:
+            case R.id.container_hw_commit:
                 /*//提示用户正在登陆，不允许其进行操作
                 waitDialogFragment = new WaitDialogFragment();
                 Bundle bundle = new Bundle();
@@ -148,19 +148,19 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 waitDialogFragment.show(getFragmentManager(), "dialog");*/
 
                 String arraylist = gson.toJson(mArrayList);
-                Log.e("钱捆list列表----->",arraylist);
-                if(bankEmployee1 == null || bankEmployee2 == null || mArrayList.size() == 0) {
-                    Toast.makeText(mContext,"数据不完整，无法提交！",Toast.LENGTH_LONG).show();
+                Log.e("钱捆list列表----->", arraylist);
+                if (bankEmployee1 == null || bankEmployee2 == null || mArrayList.size() == 0) {
+                    Toast.makeText(mContext, "数据不完整，无法提交！", Toast.LENGTH_LONG).show();
                     return;
                 }
                 final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
                         + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
-                        +  "&list=" + arraylist;
+                        + "&list=" + arraylist;
 
                 /*final String params = "employee1=" + "safafassa" + "&employee1_rfid=" + "654531237"
                         + "&employee2=" + "zxalsfasvfa" + "&employee2_rfid=" + "54316542"
                         + "&moneyAmount=" + moneyAmount + "&list=" + arraylist;*/
-                Log.i("params--->",params);
+                Log.i("params--->", params);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -168,12 +168,12 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                             //获取返回信息
                             String responseContent = HttpUtils.
                                     doPost(Constants.URL_Upload_Associate, params);
-                            Log.e("获取到的返回信息是 ------>", responseContent+"");
-                            ResultInfo resultInfo = gson.fromJson(responseContent,ResultInfo.class);
+                            Log.e("获取到的返回信息是 ------>", responseContent + "");
+                            ResultInfo resultInfo = gson.fromJson(responseContent, ResultInfo.class);
                             Message message = Message.obtain();
                             Bundle bundle = new Bundle();
-                            bundle.putString("code",resultInfo.getCode());
-                            bundle.putString("message",resultInfo.getMessage());
+                            bundle.putString("code", resultInfo.getCode());
+                            bundle.putString("message", resultInfo.getMessage());
                             message.what = MSG_HW_DATA_COMMIT;
                             message.setData(bundle);
                             mHandler.sendMessage(message);
@@ -191,6 +191,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
 
     private int tty_speed = 57600;
     private byte addr = (byte) 0xff;
+
     /**
      * 连接设备
      */
@@ -213,7 +214,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 Toast.makeText(this, "连接设备失败，请关闭程序重新登录", Toast.LENGTH_LONG).show();
                 return;
             }
-            Log.e("startScan----->","1");
+            Log.e("startScan----->", "1");
             if (timer == null) {
                 //声音开关初始化
                 UfhData.Set_sound(true);
@@ -221,17 +222,17 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
 
                 isCanceled = false;
                 timer = new Timer();
-                Log.e("startScan----->","2");
+                Log.e("startScan----->", "2");
                 //
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-//                        if (Scanflag)
-//                            return;
+                        //                        if (Scanflag)
+                        //                            return;
                         Scanflag = true;
-                        Log.e("startScan----->","3");
+                        Log.e("startScan----->", "3");
                         UfhData.read6c();
-                        Log.e("startScan----->","4");
+                        Log.e("startScan----->", "4");
                         mHandler.removeMessages(MSG_UPDATE_EMPLOYEE_NAME);
                         mHandler.sendEmptyMessage(MSG_UPDATE_EMPLOYEE_NAME);
                         Scanflag = false;
@@ -254,13 +255,13 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
      */
     private void cancelScan() {
         try {
-            Log.e("cancelScan----->","1");
+            Log.e("cancelScan----->", "1");
             isCanceled = true;
             UfhData.Set_sound(false);
             UfhData.SoundFlag = false;
             mHandler.removeMessages(MSG_UPDATE_EMPLOYEE_NAME);
             if (timer != null) {
-                Log.e("cancelScan----->","2");
+                Log.e("cancelScan----->", "2");
                 timer.cancel();
                 timer = null;
                 btnScanPerson.setText("添加人员");
@@ -278,15 +279,15 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
             try {
                 //获取返回信息
                 String responseContent = HttpUtils.
-                        doPost(Constants.URL_FIND_BANK_EMPLOYEE, requestContent);
+                        doPost(Constants.URL_FIND_YINYAN_BANK_EMPLOYEE, requestContent);
                 Log.e("获取到的返回信息是 ------>", responseContent);
-                EmployeeName employeeName = gson.fromJson(responseContent,EmployeeName.class);
+                EmployeeName employeeName = gson.fromJson(responseContent, EmployeeName.class);
                 Message message = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putString("code",employeeName.getCode());
-                bundle.putString("message",employeeName.getMessage());
-                bundle.putString("name",employeeName.getEmployeeName());
-                bundle.putString("rfid",employeeName.getRfid());
+                bundle.putString("code", employeeName.getCode());
+                bundle.putString("message", employeeName.getMessage());
+                bundle.putString("name", employeeName.getEmployeeName());
+                bundle.putString("rfid", employeeName.getRfid());
                 message.what = MSG_HW_GET_NAME;
                 message.setData(bundle);
                 mHandler.sendMessage(message);
@@ -313,7 +314,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                     ArrayList<String> list = bundle.getStringArrayList("list");
                     assert list != null;
                     for (String s : list) {
-                        if (!mArrayList.contains(s) && mArrayList.size() <= 20) {
+                        if (!mArrayList.contains(s)) {
                             mArrayList.add(s);
                         }
                     }
@@ -324,24 +325,25 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
             }
 
         }
-        super.onActivityResult(requestCode,resultCode,data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case MSG_UPDATE_EMPLOYEE_NAME:
-//                    if (isCanceled)
-//                        return;
+                    //                    if (isCanceled)
+                    //                        return;
                     data = UfhData.scanResult6c;
-                    Log.e("getData----->",data.toString());
+                    Log.e("getData----->", data.toString());
                     Iterator it = data.keySet().iterator();
                     while (it.hasNext()) {
-                        String str =(String) it.next();
-                        Log.e("扫到的工牌信息",str);
+                        String str = (String) it.next();
+                        Log.e("扫到的工牌信息", str);
                         if (!TextUtils.isEmpty(str)) {
-                            if(btnScanPerson.getText().toString().equals("停止扫描"))    cancelScan();
+                            if (btnScanPerson.getText().toString().equals("停止扫描"))
+                                cancelScan();
                             requestContent = "rfidCode=" + str;
                             MyThread myThread = new MyThread();
                             myThread.start();
@@ -351,7 +353,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                     }
                     break;
                 /*处理网络请求 得到人员信息*/
-                //TODO 判断人员是否是人民银行的人
+                //TODO 判断人员是否是人民银行和银雁的人
                 case MSG_HW_GET_NAME:
                     Bundle bundle = msg.getData();
                     EmployeeName employeeName = new EmployeeName();
@@ -359,26 +361,28 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                     employeeName.setMessage(bundle.getString("message"));
                     employeeName.setEmployeeName(bundle.getString("name"));
                     employeeName.setRfid(bundle.getString("rfid"));
-                    if(employeeName.getCode().equals(ResultInfo.CODE_ERROR)){
-                        Toast.makeText(mContext,employeeName.getMessage(),Toast.LENGTH_LONG).show();
+                    if (employeeName.getCode().equals(ResultInfo.CODE_ERROR)) {
+                        Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
                         break;
                     }
-                    if(bankEmployee1 == null && employeeName.getCode().equals(EmployeeName.CODE_REN)){
+                    //说明是人民银行网点的人
+                    if (bankEmployee1 == null && employeeName.getCode().equals(EmployeeName.CODE_REN)) {
                         bankEmployee1 = employeeName;
                         tvPersonName1.setText(bankEmployee1.getEmployeeName());
                         break;
-                    }else if(bankEmployee1 != null && employeeName.getCode().equals(EmployeeName.CODE_SUCCESS)){
+                    //说明是银雁的人
+                    } else if (bankEmployee1 != null && employeeName.getCode().equals(EmployeeName.CODE_SUCCESS)) {
                         bankEmployee2 = employeeName;
                         tvPersonName2.setText(bankEmployee2.getEmployeeName());
                         break;
                     }
-                    Toast.makeText(mContext,employeeName.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
                     break;
                 /*提交数据到服务器*/
                 case MSG_HW_DATA_COMMIT:
                     Bundle bundle1 = msg.getData();
                     ResultInfo resultInfo1 = new ResultInfo();
-                    Log.e("上传数据resultinfo--->",resultInfo1.toString());
+                    Log.e("上传数据resultinfo--->", resultInfo1.toString());
                     resultInfo1.setCode(bundle1.getString("code"));
                     resultInfo1.setMessage(bundle1.getString("message"));
                     if (resultInfo1.getCode().equals(ResultInfo.CODE_SUCCESS)) {
@@ -406,7 +410,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
         }
     };
 
-    void clearView(){
+    void clearView() {
         tvPersonName1.setText("");
         tvPersonName2.setText("");
         bankEmployee1 = null;
@@ -414,5 +418,6 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
         mArrayList.clear();
         arrayAdapter.notifyDataSetChanged();
     }
+
 
 }
