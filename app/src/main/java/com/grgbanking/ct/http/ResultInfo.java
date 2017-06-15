@@ -1,8 +1,9 @@
 package com.grgbanking.ct.http;
 
 
+import java.io.Serializable;
 
-public class ResultInfo {
+public class ResultInfo implements Serializable{
 	private String code;
 	private String message;
 	private String text;

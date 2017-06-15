@@ -61,44 +61,87 @@
             android:id="@+id/hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="#F47F0D"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="@string/handover_PBC_staff" />
-        <TextView
-            android:id="@+id/hw_show_name1"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:paddingLeft="20dp"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/hw_person1"
-            android:layout_toEndOf="@+id/hw_person1"
-            android:layout_toLeftOf="@+id/hw_person_scan"/>
+            android:layout_toLeftOf="@+id/hw_person_scan"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hw_show_name1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="人员1"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/hw_show_name12"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:maxLines="1"
+                android:hint="人员2"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/hw_person2"
             android:layout_below="@+id/hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="#F47F0D"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="@string/handover_Bank_staff" />
-        <TextView
-            android:id="@+id/hw_show_name2"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:paddingLeft="20dp"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/hw_person2"
             android:layout_toLeftOf="@+id/hw_person_scan"
-            android:layout_toRightOf="@+id/hw_person2"/>
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/hw_show_name2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:hint="人员1"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/hw_show_name22"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:hint="人员2"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
         <!-- 扫描工卡，-->
         <Button
             android:id="@+id/hw_person_scan"

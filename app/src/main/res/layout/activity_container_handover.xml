@@ -6,25 +6,26 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 tools:context="com.grgbanking.ct.HandoverWorkActivity">
+
     <RelativeLayout
         android:id="@+id/container_hw_title_layout"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:background="#3695E2"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#3695E2"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/container_hw_back"
-            android:textSize="16sp"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="10dp"
             android:background="#3695E2"
-            android:text="@string/button_back" />
+            android:padding="10dp"
+            android:text="@string/button_back"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/container_hw_title_view"
@@ -34,16 +35,17 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="@string/handover_YinYan_handover" />
+            android:text="@string/handover_YinYan_handover"/>
+
         <Spinner
             android:id="@+id/container_hw_spinner"
             android:layout_width="wrap_content"
-            android:padding="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:entries="@array/money"
             android:gravity="center"
-            android:visibility="gone"
-            android:entries="@array/money">
+            android:padding="5dp"
+            android:visibility="gone">
         </Spinner>
 
     </RelativeLayout>
@@ -52,91 +54,141 @@
         android:id="@+id/container_hw_person_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/container_hw_title_layout"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/container_hw_title_layout">
+
         <TextView
             android:id="@+id/container_hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
+            android:text="@string/handover_PBC_staff"
             android:textColor="#F47F0D"
-            android:textSize="18sp"
-            android:text="@string/handover_PBC_staff" />
-        <TextView
-            android:id="@+id/container_hw_show_name1"
-            android:layout_width="fill_parent"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:paddingLeft="20dp"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/container_hw_person_scan"
             android:layout_toRightOf="@+id/container_hw_person1"
-            android:layout_toEndOf="@+id/container_hw_person1"
-            android:layout_toLeftOf="@+id/container_hw_person_scan"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/container_hw_show_name1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="人员1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/container_hw_show_name12"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="人员2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/container_hw_person2"
-            android:layout_below="@+id/container_hw_person1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
             android:gravity="center"
+            android:text="@string/handover_YinYan_staff"
             android:textColor="#F47F0D"
-            android:textSize="18sp"
-            android:text="@string/handover_YinYan_staff" />
-        <TextView
-            android:id="@+id/container_hw_show_name2"
-            android:layout_width="fill_parent"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/container_hw_person1"
+            android:layout_alignStart="@+id/container_hw_person1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:paddingLeft="20dp"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/container_hw_person_scan"
-            android:layout_toRightOf="@+id/container_hw_person2"/>
+            android:layout_toRightOf="@+id/container_hw_person2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/container_hw_show_name2"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="人员1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/container_hw_show_name22"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="人员2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_grey"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
         <!-- 扫描工卡，-->
         <Button
             android:id="@+id/container_hw_person_scan"
             style="@style/buttonText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#FB7F2C"
             android:layout_alignParentRight="true"
-            android:text="@string/handover_add_staff"
             android:layout_margin="5dp"
+            android:background="#FB7F2C"
             android:padding="5dp"
+            android:text="@string/handover_add_staff"
             />
     </RelativeLayout>
+
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@+id/container_hw_person_layout"
-        android:background="@color/darkgrey"
-        android:id="@+id/view" />
+        android:background="@color/darkgrey"/>
 
     <ListView
         android:id="@+id/container_hw_listView"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/container_hw_money_scan"
+        android:layout_below="@+id/container_hw_person_layout"
         android:divider="#F2F5F7"
         android:dividerHeight="1dp"
-        android:layout_below="@+id/container_hw_person_layout"
         />
     <!-- 扫描二维码 -->
     <Button
         android:id="@+id/container_hw_money_scan"
-        android:layout_above="@+id/container_hw_commit"
         style="@style/buttonText"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
+        android:layout_above="@+id/container_hw_commit"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:background="#FB7F2C"
-        android:text="@string/handover_YinYan_scanBox" />
+        android:text="@string/handover_YinYan_scanBox"/>
+
     <Button
         android:id="@+id/container_hw_commit"
         style="@style/buttonText"
@@ -145,6 +197,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
         android:background="#FB7F2C"
-        android:text="@string/handover_commit_data" />
+        android:text="@string/handover_commit_data"/>
 </RelativeLayout>
 

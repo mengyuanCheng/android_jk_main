@@ -2,6 +2,7 @@ package com.grgbanking.ct;
 
 import android.accounts.NetworkErrorException;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,8 +41,10 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
     private Button btnScanPeiXiang;   //扫描配箱信息
     private Button btnCommit;     //提交数据
     private Spinner spinner;      //下拉菜单
-    private TextView tvPersonName1;   //人员名字1
-    private TextView tvPersonName2;   //人员名字2
+    private TextView tvPersonName1;   //人行人员名字1
+    private TextView tvPersonName12;  //人行人员名字2
+    private TextView tvPersonName2;    //银雁人员名字1
+    private TextView tvPersonName22;    //银雁人员2
     private WaitDialogFragment waitDialogFragment;  //提交数据等待页面
     private ListView pxListView;      //存放配箱信息的listView；
     private ArrayAdapter arrayAdapter;
@@ -60,7 +63,9 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
 
     private Gson gson = new Gson();
     private EmployeeName bankEmployee1;                //用来显示工牌扫描出的结果在后台匹配的人员信息
+    private EmployeeName bankEmployee12;
     private EmployeeName bankEmployee2;
+    private EmployeeName bankEmployee22;
     private String moneyAmount; //面额  需上传
 
 
@@ -101,6 +106,8 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
         });
         tvPersonName1 = (TextView) findViewById(R.id.container_hw_show_name1);
         tvPersonName2 = (TextView) findViewById(R.id.container_hw_show_name2);
+        tvPersonName12 = (TextView) findViewById(R.id.container_hw_show_name12);
+        tvPersonName22 = (TextView) findViewById(R.id.container_hw_show_name22);
         pxListView = (ListView) findViewById(R.id.container_hw_listView);
 
     }
@@ -154,12 +161,11 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                     return;
                 }
                 final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
+                        + "&employee12=" + bankEmployee12.getEmployeeName() + "&employee12_rfid" + bankEmployee12.getRfid()
                         + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
+                        + "&employee22=" + bankEmployee22.getEmployeeName() + "&employee2_rfid=" + bankEmployee22.getRfid()
                         + "&list=" + arraylist;
 
-                /*final String params = "employee1=" + "safafassa" + "&employee1_rfid=" + "654531237"
-                        + "&employee2=" + "zxalsfasvfa" + "&employee2_rfid=" + "54316542"
-                        + "&moneyAmount=" + moneyAmount + "&list=" + arraylist;*/
                 Log.i("params--->", params);
                 new Thread(new Runnable() {
                     @Override
@@ -199,7 +205,6 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
         int result = UfhData.UhfGetData.OpenUhf(tty_speed, addr, 4, 1, null);
         if (result == 0) {
             UfhData.UhfGetData.GetUhfInfo();
-            Toast.makeText(mContext, "连接设备成功,请继续操作", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(mContext, "连接设备失败，请关闭程序重新登录", Toast.LENGTH_LONG).show();
         }
@@ -299,7 +304,7 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
 
 
     /**
-     * 处理返回的结果
+     * 处理扫描返回的结果
      *
      * @param requestCode
      * @param resultCode
@@ -362,6 +367,55 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                     employeeName.setEmployeeName(bundle.getString("name"));
                     employeeName.setRfid(bundle.getString("rfid"));
                     if (employeeName.getCode().equals(ResultInfo.CODE_ERROR)) {
+
+                        Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (employeeName.getCode().equals(EmployeeName.CODE_REN)) {
+                        //如果人行的 人员1 是空的时
+                        if (bankEmployee1 == null) {
+
+                            bankEmployee1 = employeeName;
+                            tvPersonName1.setText(bankEmployee1.getEmployeeName());
+                            break;
+                            // 如果人员1 不为空 ,但人员 2 为空
+                        } else if (bankEmployee1 != null && bankEmployee12 == null) {
+                            if (bankEmployee1.getRfid().equals(employeeName.getRfid())) {
+
+                                showAlertDialog("人行人员信息重复,请重新扫描");
+                                break;
+                            } else {
+
+                                bankEmployee12 = employeeName;
+                                tvPersonName12.setText(bankEmployee12.getEmployeeName());
+                                break;
+                            }
+                        }
+                    } else if (employeeName.getCode().equals(EmployeeName.CODE_SUCCESS)) {
+                        //如果银行的 人员1 是空的时
+                        if (bankEmployee2 == null) {
+
+                            bankEmployee2 = employeeName;
+                            tvPersonName2.setText(bankEmployee2.getEmployeeName());
+                            break;
+                            // 如果人员1 不为空 ,但人员 2 为空
+                        } else if (bankEmployee2 != null && bankEmployee22 == null) {
+                            if (bankEmployee2.getRfid().equals(employeeName.getRfid())) {
+
+                                showAlertDialog("银行人员信息重复,请重新扫描");
+                                break;
+                            } else {
+
+                                bankEmployee22 = employeeName;
+                                tvPersonName22.setText(bankEmployee22.getEmployeeName());
+                                break;
+                            }
+                        }
+                    }
+                    Toast.makeText(mContext, "人员信息已添加!", Toast.LENGTH_SHORT).show();
+                    break;
+
+                    /*if (employeeName.getCode().equals(ResultInfo.CODE_ERROR)) {
                         Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
                         break;
                     }
@@ -377,7 +431,7 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                         break;
                     }
                     Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
-                    break;
+                    break;*/
                 /*提交数据到服务器*/
                 case MSG_HW_DATA_COMMIT:
                     Bundle bundle1 = msg.getData();
@@ -418,6 +472,12 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
         mArrayList.clear();
         arrayAdapter.notifyDataSetChanged();
     }
-
+    void showAlertDialog(String msg) {
+        new AlertDialog.Builder(mContext)
+                .setTitle("提示")
+                .setMessage(msg)
+                .setPositiveButton("确定", null)
+                .show();
+    }
 
 }
