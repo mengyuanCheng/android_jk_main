@@ -5,11 +5,13 @@ import com.grgbanking.ct.http.ResultInfo;
 
 import java.io.Serializable;
 
-public class EmployeeName extends ResultInfo {
+public class EmployeeName extends ResultInfo implements Serializable{
 		
 	private String employeeName;
 		
 	private String rfid;
+
+	private String employeeBank;
     public static final String CODE_REN="0";
 
 	public String getEmployeeName() {
@@ -28,6 +30,20 @@ public class EmployeeName extends ResultInfo {
 		this.rfid = rfid;
 	}
 
+	public String getEmployeeBank() {
+		return employeeBank;
+	}
 
+	public void setEmployeeBank(String employeeBank) {
+		this.employeeBank = employeeBank;
+	}
 
+	@Override
+	public String toString() {
+		return "EmployeeName{" +
+				"employeeName='" + employeeName + '\'' +
+				", rfid='" + rfid + '\'' +
+				", employeeBank='" + employeeBank + '\'' +
+				'}';
+	}
 }

@@ -414,24 +414,6 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                     }
                     Toast.makeText(mContext, "人员信息已添加!", Toast.LENGTH_SHORT).show();
                     break;
-
-                    /*if (employeeName.getCode().equals(ResultInfo.CODE_ERROR)) {
-                        Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                    //说明是人民银行网点的人
-                    if (bankEmployee1 == null && employeeName.getCode().equals(EmployeeName.CODE_REN)) {
-                        bankEmployee1 = employeeName;
-                        tvPersonName1.setText(bankEmployee1.getEmployeeName());
-                        break;
-                    //说明是银雁的人
-                    } else if (bankEmployee1 != null && employeeName.getCode().equals(EmployeeName.CODE_SUCCESS)) {
-                        bankEmployee2 = employeeName;
-                        tvPersonName2.setText(bankEmployee2.getEmployeeName());
-                        break;
-                    }
-                    Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
-                    break;*/
                 /*提交数据到服务器*/
                 case MSG_HW_DATA_COMMIT:
                     Bundle bundle1 = msg.getData();
@@ -440,19 +422,11 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                     resultInfo1.setCode(bundle1.getString("code"));
                     resultInfo1.setMessage(bundle1.getString("message"));
                     if (resultInfo1.getCode().equals(ResultInfo.CODE_SUCCESS)) {
-                        /*if (waitDialogFragment.isVisible()) {
-                            waitDialogFragment.setCancelable(true);
-                            waitDialogFragment.dismiss();
-                            waitDialogFragment.onDestroy();
-                        }*/
+
                         Toast.makeText(mContext, resultInfo1.getMessage(), Toast.LENGTH_SHORT).show();
                         clearView();
                     } else if (resultInfo1.getCode().equals(ResultInfo.CODE_ERROR)) {
-                        /*if (waitDialogFragment.isInLayout()) {
-                            waitDialogFragment.setCancelable(true);
-                            waitDialogFragment.dismiss();
-                            waitDialogFragment.onDestroy();
-                        }*/
+
                         Toast.makeText(mContext, "提交数据失败，请重新提交", Toast.LENGTH_LONG).show();
                         clearView();
                     }
@@ -467,8 +441,12 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
     void clearView() {
         tvPersonName1.setText("");
         tvPersonName2.setText("");
+        tvPersonName12.setText("");
+        tvPersonName22.setText("");
         bankEmployee1 = null;
         bankEmployee2 = null;
+        bankEmployee12 = null;
+        bankEmployee22 = null;
         mArrayList.clear();
         arrayAdapter.notifyDataSetChanged();
     }

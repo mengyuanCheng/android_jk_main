@@ -279,14 +279,16 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 //获取返回信息
                 String responseContent = HttpUtils.
                         doPost(Constants.URL_FIND_BANK_EMPLOYEE, requestContent);
-                Log.e("获取到的返回信息是 ------>", responseContent);
+                Log.e("获取到的返回信息是 ------>", responseContent + "..");
                 EmployeeName employeeName = gson.fromJson(responseContent, EmployeeName.class);
                 Message message = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putString("code", employeeName.getCode());
+                bundle.putSerializable("employee", employeeName);
+                /*bundle.putString("code", employeeName.getCode());
                 bundle.putString("message", employeeName.getMessage());
                 bundle.putString("name", employeeName.getEmployeeName());
                 bundle.putString("rfid", employeeName.getRfid());
+                bundle.putString("employeeBank",employeeName.getEmployeeBank());*/
                 message.what = MSG_HW_GET_NAME;
                 message.setData(bundle);
                 mHandler.sendMessage(message);
@@ -355,11 +357,13 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                 //TODO 判断人员是否是人民银行的人
                 case MSG_HW_GET_NAME:
                     Bundle bundle = msg.getData();
-                    EmployeeName employeeName = new EmployeeName();
+                    EmployeeName employeeName = (EmployeeName) bundle.getSerializable("employee");
+                    /*EmployeeName employeeName = new EmployeeName();
                     employeeName.setCode(bundle.getString("code"));
                     employeeName.setMessage(bundle.getString("message"));
                     employeeName.setEmployeeName(bundle.getString("name"));
                     employeeName.setRfid(bundle.getString("rfid"));
+                    employeeName.setEmployeeBank(bundle.getString("employeeBank"));*/
                     if (employeeName.getCode().equals(ResultInfo.CODE_ERROR)) {
 
                         Toast.makeText(mContext, employeeName.getMessage(), Toast.LENGTH_SHORT).show();
@@ -398,6 +402,10 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
 
                                 showAlertDialog("银行人员信息重复,请重新扫描");
                                 break;
+                            } else if (!bankEmployee2.getEmployeeBank().equals(employeeName.getEmployeeBank())) {
+
+                                showAlertDialog("非本网点人员，请重新扫描");
+                                break;
                             } else {
 
                                 bankEmployee22 = employeeName;
@@ -435,6 +443,8 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
     void clearView() {
         tvPersonName1.setText("");
         tvPersonName2.setText("");
+        tvPersonName12.setText("");
+        tvPersonName22.setText("");
         bankEmployee1 = null;
         bankEmployee2 = null;
         bankEmployee12 = null;
