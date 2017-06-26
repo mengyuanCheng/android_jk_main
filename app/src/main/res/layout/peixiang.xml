@@ -54,10 +54,11 @@
         android:layout_height="100dp"
         android:layout_below="@+id/title_layout"
         android:layout_centerInParent="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="40dp"
         android:background="#FB7F2C"
         android:gravity="center"
         android:text="配袋"
+
         />
 
     <Button
@@ -67,7 +68,7 @@
         android:layout_height="100dp"
         android:layout_below="@+id/peixiang_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="50dp"
         android:background="#FB7F2C"
         android:gravity="center"
         android:text="款箱交接"
