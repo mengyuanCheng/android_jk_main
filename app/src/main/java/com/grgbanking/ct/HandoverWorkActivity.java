@@ -34,6 +34,10 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author lazylee
+ * 人行端交接页面
+ */
 public class HandoverWorkActivity extends Activity implements View.OnClickListener {
 
     private Context mContext;
@@ -158,7 +162,7 @@ public class HandoverWorkActivity extends Activity implements View.OnClickListen
                         + "&employee12=" + bankEmployee12.getEmployeeName() + "&employee12_rfid" + bankEmployee12.getRfid()
                         + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
                         + "&employee22=" + bankEmployee22.getEmployeeName() + "&employee2_rfid=" + bankEmployee22.getRfid()
-                        + "&list=" + arraylist;
+                        + "&list=" + arraylist + "&flag=" + "2";
 
                 Log.i("params--->", params);
                 new Thread(new Runnable() {

@@ -34,6 +34,10 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author lazylee
+ * 银雁清分场地交接页面
+ */
 public class ContainerHandoverActivity extends Activity implements View.OnClickListener {
     private Context mContext;
     private Button btnBack;  //返回按钮
@@ -164,7 +168,7 @@ public class ContainerHandoverActivity extends Activity implements View.OnClickL
                         + "&employee12=" + bankEmployee12.getEmployeeName() + "&employee12_rfid" + bankEmployee12.getRfid()
                         + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
                         + "&employee22=" + bankEmployee22.getEmployeeName() + "&employee2_rfid=" + bankEmployee22.getRfid()
-                        + "&list=" + arraylist;
+                        + "&list=" + arraylist + "&flag=" + "1";
 
                 Log.i("params--->", params);
                 new Thread(new Runnable() {
