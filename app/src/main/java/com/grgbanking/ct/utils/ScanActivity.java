@@ -1,8 +1,10 @@
 package com.grgbanking.ct.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.device.ScanManager;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -46,11 +49,12 @@ public class ScanActivity extends Activity implements OnClickListener {
     private Button btnCommit;          //提交二维码信息到pxDetail页面
     private Button btnStartScan;       //开始扫描
     private Button btnStopScan;        //结束扫描
-
+    private Context mContext;
     private ListView mListView;        //用于扫描已经扫过的二维码信息
     private String pxName;
     private ArrayAdapter arrayAdapter;
     private ArrayList<String> mList = new ArrayList<>();
+    private ArrayList<String> arrayList = new ArrayList<>();
 
     private int type;
     private int outPut;
@@ -78,17 +82,26 @@ public class ScanActivity extends Activity implements OnClickListener {
             //String barcodeStr = intent.getStringExtra("barcode_string");
             showScanResult.setText(barcodeStr);
             //如果mFlag == FLAG_PX_DETAIL，即是要扫描钱捆
-            if(mFlag == FLAG_PX_DETAIL) {
-                if (mList.contains(barcodeStr)) {
+            if (mFlag == FLAG_PX_DETAIL) {
+                if (mList.contains(barcodeStr) || arrayList.contains(barcodeStr)) {
                     Toast.makeText(ScanActivity.this, "扫描结果已经存在", Toast.LENGTH_SHORT).show();
                     return;
+                } else if ((mList.size() + arrayList.size()) >= 20) {
+                    Toast.makeText(ScanActivity.this, "已扫描20捆钱", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if ((mList.size() + arrayList.size()) == 19) {
+                    mList.add(barcodeStr);
+                    if (arrayAdapter != null) {
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                    commitData();
                 } else {
                     mList.add(barcodeStr);
                     if (arrayAdapter != null) {
                         arrayAdapter.notifyDataSetChanged();
                     }
                 }
-            }else if(mFlag == FLAG_PX_PXNAME){   //表示扫描的是peixiang号
+            } else if (mFlag == FLAG_PX_PXNAME) {   //表示扫描的是peixiang号
                 pxName = barcodeStr;
             }
         }
@@ -104,14 +117,38 @@ public class ScanActivity extends Activity implements OnClickListener {
         setContentView(R.layout.sacn_activity);
 
         mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        mContext = ScanActivity.this;
         setupView();
 
         Intent intent = getIntent();
         mFlag = intent.getFlags();   //获取flag
+        if (mFlag == FLAG_PX_DETAIL) {
+            Bundle bundle = intent.getBundleExtra("bundle");
+            arrayList = (ArrayList<String>) bundle.getSerializable("list");
+        }
 
         //mList.add("在这里存放扫描结果");
         arrayAdapter = new ArrayAdapter(this, R.layout.simple_listview_item, R.id.listView_item_textView, mList);
         mListView.setAdapter(arrayAdapter);
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                new AlertDialog.Builder(mContext)
+                        .setTitle("提示")
+                        .setMessage("删除所选钱捆?")
+                        .setNegativeButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mList.remove(position);
+                                arrayAdapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setPositiveButton("取消", null)
+                        .show();
+
+                return false;
+            }
+        });
 
 
     }
@@ -176,12 +213,12 @@ public class ScanActivity extends Activity implements OnClickListener {
             Bundle bundle = new Bundle();
             bundle.putStringArrayList("list", mList);
             commitIntent.putExtra("bundle", bundle);
-            this.setResult(RESULT_CODE_SCAN,commitIntent);
+            this.setResult(RESULT_CODE_SCAN, commitIntent);
             finish();
-        }else if(mFlag == FLAG_PX_PXNAME){
+        } else if (mFlag == FLAG_PX_PXNAME) {
             Intent pxIntent = new Intent();
-            pxIntent.putExtra("pxName",pxName);
-            this.setResult(RESULT_CODE_SCAN,pxIntent);
+            pxIntent.putExtra("pxName", pxName);
+            this.setResult(RESULT_CODE_SCAN, pxIntent);
             finish();
         }
     }
@@ -223,11 +260,10 @@ public class ScanActivity extends Activity implements OnClickListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
-        if (keyCode == KeyEvent.KEYCODE_BACK )
-        {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             return true;
         }
-        return super.onKeyDown(keyCode,event);
+        return super.onKeyDown(keyCode, event);
 
     }
 

@@ -37,10 +37,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+
 /**
  * Created by Administrator on 2016/7/12.
  * <p>
  * 用于对配箱的操作：包括扫描出装箱人员，扫描20捆钱进行装箱
+ * </p>
  */
 public class PeixiangdtActivity extends Activity implements View.OnClickListener {
 
@@ -90,6 +92,24 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
         arrayAdapter = new ArrayAdapter(this, R.layout.simple_listview_item,
                 R.id.listView_item_textView, mArrayList);
         pxDetailListView.setAdapter(arrayAdapter);
+        pxDetailListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,final int position, long id) {
+                new AlertDialog.Builder(mContext)
+                        .setTitle("提示")
+                        .setMessage("删除所选钱捆?")
+                        .setNegativeButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mArrayList.remove(position);
+                                arrayAdapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setPositiveButton("取消",null)
+                        .show();
+                return false;
+            }
+        });
     }
 
     private void findViewById() {
@@ -122,6 +142,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 moneyAmount = parent.getItemAtPosition(position).toString();
                 Log.i("选择的面额是----->", moneyAmount);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -138,7 +159,8 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
             case R.id.px_detail_person_scan:
                 if (!UfhData.isDeviceOpen()) {
                     connectDevice();
-                    if(!UfhData.isDeviceOpen()) break;
+                    if (!UfhData.isDeviceOpen())
+                        break;
                 }
                 if (pxDetailScanPerson.getText().toString().equals("添加人员")) {
                     startScan();
@@ -153,8 +175,12 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
             case R.id.px_detail_money_scan:
                 Intent intent = new Intent(PeixiangdtActivity.this, ScanActivity.class);
                 intent.setFlags(ScanActivity.FLAG_PX_DETAIL);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("list",mArrayList);
+                intent.putExtra("bundle",bundle);
                 startActivityForResult(intent, ScanActivity.FLAG_PX_DETAIL);
-                if (UfhData.isDeviceOpen()) UhfGetData.CloseUhf(); //跳转页面前结束连接
+                if (UfhData.isDeviceOpen())
+                    UhfGetData.CloseUhf(); //跳转页面前结束连接
                 break;
             //TODO 提交数据到服务器
             case R.id.px_detail_commit:
@@ -164,8 +190,6 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
-
-
 
 
     private int tty_speed = 57600;
@@ -193,23 +217,23 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 Toast.makeText(this, "连接设备失败，请关闭程序重新登录", Toast.LENGTH_LONG).show();
                 return;
             }
-            Log.e("startScan----->","1");
+            Log.e("startScan----->", "1");
             if (timer == null) {
                 //声音开关初始化
                 UfhData.Set_sound(true);
                 UfhData.SoundFlag = true;
                 isCanceled = false;
-                Log.e("startScan----->","2");
+                Log.e("startScan----->", "2");
                 timer = new Timer();
                 //
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-//                        if (Scanflag)
-//                            return;
+                        //                        if (Scanflag)
+                        //                            return;
                         Scanflag = true;
                         UfhData.read6c();
-                        Log.e("startScan----->","3");
+                        Log.e("startScan----->", "3");
                         mHandler.removeMessages(MSG_UPDATE_EMPLOYEE_NAME);
                         mHandler.sendEmptyMessage(MSG_UPDATE_EMPLOYEE_NAME);
                         Scanflag = false;
@@ -261,11 +285,11 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
         try {
             isCanceled = true;
             mHandler.removeMessages(MSG_UPDATE_EMPLOYEE_NAME);
-            Log.e("cancelScan----->","1");
+            Log.e("cancelScan----->", "1");
             UfhData.Set_sound(false);
             UfhData.SoundFlag = false;
             if (timer != null) {
-                Log.e("cancelScan----->","2");
+                Log.e("cancelScan----->", "2");
                 timer.cancel();
                 timer = null;
                 pxDetailScanPerson.setText("添加人员");
@@ -317,24 +341,30 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     Bundle bundle = data.getBundleExtra("bundle");
                     ArrayList<String> list = bundle.getStringArrayList("list");
                     for (String s : list) {
-                        if (!mArrayList.contains(s) && mArrayList.size() <= 20) {
-                            mArrayList.add(s);
-                        }else{
-                            new AlertDialog.Builder(mContext)
-                                    .setMessage("提示")
-                                    .setMessage("列表已满，是否确认提交？")
-                                    .setPositiveButton("提交", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            //TODO 提交数据
-                                            commitData();
-                                        }
-                                    })
-                                    .setNegativeButton("取消",null)
-                                    .show();
+                        if (!mArrayList.contains(s) ){
+                            if(mArrayList.size() < 19){
+                                mArrayList.add(s);
+                                arrayAdapter.notifyDataSetChanged();
+                            }else if(mArrayList.size() == 19){
+                                mArrayList.add(s);
+                                arrayAdapter.notifyDataSetChanged();
+                                new AlertDialog.Builder(mContext)
+                                        .setMessage("提示")
+                                        .setMessage("列表已满，是否确认提交？")
+                                        .setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //TODO 提交数据
+                                                commitData();
+                                            }
+                                        })
+                                        .setNegativeButton("取消", null)
+                                        .show();
+                            }
+                        } else {
+                            Toast.makeText(mContext, "存在重复数据", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    arrayAdapter.notifyDataSetChanged();
                     break;
                 case ScanActivity.FLAG_PX_PXNAME:
                     pxName = data.getStringExtra("pxName");
@@ -345,7 +375,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
             }
 
         }
-        super.onActivityResult(requestCode,resultCode,data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
@@ -358,14 +388,14 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                 //获取返回信息
                 String responseContent = HttpUtils.
                         doPost(Constants.URL_FIT_BACK_EMPLOYEE, requestContent);
-                Log.e("获取到的返回信息是 ------>", responseContent+"");
-                EmployeeName employeeName = gson.fromJson(responseContent,EmployeeName.class);
+                Log.e("获取到的返回信息是 ------>", responseContent + "");
+                EmployeeName employeeName = gson.fromJson(responseContent, EmployeeName.class);
                 Message message = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putString("code",employeeName.getCode());
-                bundle.putString("message",employeeName.getMessage());
-                bundle.putString("name",employeeName.getEmployeeName());
-                bundle.putString("rfid",employeeName.getRfid());
+                bundle.putString("code", employeeName.getCode());
+                bundle.putString("message", employeeName.getMessage());
+                bundle.putString("name", employeeName.getEmployeeName());
+                bundle.putString("rfid", employeeName.getRfid());
                 message.what = MSG_GET_NAME;
                 message.setData(bundle);
                 mHandler.sendMessage(message);
@@ -378,7 +408,7 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-//            if (isCanceled) return;
+            //            if (isCanceled) return;
             switch (msg.what) {
                 //处理关于扫描的信息
                 //TODO 停止扫描，到后台匹配人员名字
@@ -386,18 +416,19 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     data = UfhData.scanResult6c;
                     Iterator strings = data.keySet().iterator();
                     while (strings.hasNext()) {
-                    String str =(String) strings.next();
-                    Log.e("扫到的工牌信息",str);
-                    if (!TextUtils.isEmpty(str)) {
-                        if(pxDetailScanPerson.getText().toString().equals("停止扫描")) cancelScan();
-                        requestContent = "rfidCode=" + str;
-//                            requestContent = "rfidCode=666433221";
-                        MyThread myThread = new MyThread();
-                        myThread.start();
-                        break;
-                    }
+                        String str = (String) strings.next();
+                        Log.e("扫到的工牌信息", str);
+                        if (!TextUtils.isEmpty(str)) {
+                            if (pxDetailScanPerson.getText().toString().equals("停止扫描"))
+                                cancelScan();
+                            requestContent = "rfidCode=" + str;
+                            //                            requestContent = "rfidCode=666433221";
+                            MyThread myThread = new MyThread();
+                            myThread.start();
+                            break;
+                        }
 
-                }
+                    }
                     break;
                 //查询employeeName返回结果
                 //TODO 做一个实体类 有 name 和 rfidcode 属性
@@ -410,10 +441,10 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     employeeName.setRfid(bundle.getString("rfid"));
                     if (employeeName.getCode().equals(ResultInfo.CODE_SUCCESS)) {
                         if (bankEmployee1 != null) {
-                            if(bankEmployee1.getRfid().equals(employeeName.getRfid())){
-                                Toast.makeText(mContext,"人员重复，请重新扫描！",Toast.LENGTH_SHORT).show();
+                            if (bankEmployee1.getRfid().equals(employeeName.getRfid())) {
+                                Toast.makeText(mContext, "人员重复，请重新扫描！", Toast.LENGTH_SHORT).show();
                                 break;
-                            }else {
+                            } else {
                                 bankEmployee2 = employeeName;
                                 pxDetailPersonName2.setText(bankEmployee2.getEmployeeName());
                                 //TODO 跳转到扫描配箱号
@@ -461,20 +492,26 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
         Intent pxIntent = new Intent(PeixiangdtActivity.this, ScanActivity.class);
         pxIntent.setFlags(ScanActivity.FLAG_PX_PXNAME);
         startActivityForResult(pxIntent, ScanActivity.FLAG_PX_PXNAME);
-        if (UfhData.isDeviceOpen()) UhfGetData.CloseUhf(); //跳转页面前，结束连接
+        if (UfhData.isDeviceOpen())
+            UhfGetData.CloseUhf(); //跳转页面前，结束连接
     }
+
+    /**
+     * 配箱页面提交数据
+     * 使用url ：pei-xiangz!clearPlace.do；
+     */
     private void commitData() {
         String arraylist = gson.toJson(mArrayList);
-        Log.e("钱捆list列表----->",arraylist);
-        if(bankEmployee1 == null || bankEmployee2 == null || pxName.isEmpty() || mArrayList.size() == 0) {
-            Toast.makeText(PeixiangdtActivity.this,"数据不完整，无法提交！",Toast.LENGTH_LONG).show();
+        Log.e("钱捆list列表----->", arraylist);
+        if (bankEmployee1 == null || bankEmployee2 == null || pxName.isEmpty() || mArrayList.size() == 0) {
+            Toast.makeText(PeixiangdtActivity.this, "数据不完整，无法提交！", Toast.LENGTH_LONG).show();
             return;
         }
         final String params = "employee1=" + bankEmployee1.getEmployeeName() + "&employee1_rfid=" + bankEmployee1.getRfid()
                 + "&employee2=" + bankEmployee2.getEmployeeName() + "&employee2_rfid=" + bankEmployee2.getRfid()
                 + "&pxName=" + pxName + "&list=" + arraylist;
 
-        Log.i("params--->",params);
+        Log.i("params--->", params);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -483,11 +520,11 @@ public class PeixiangdtActivity extends Activity implements View.OnClickListener
                     String responseContent = HttpUtils.
                             doPost(Constants.URL_DATA_COMMIT, params);
                     Log.i("获取到的返回信息是 ------>", responseContent);
-                    ResultInfo resultInfo = gson.fromJson(responseContent,ResultInfo.class);
+                    ResultInfo resultInfo = gson.fromJson(responseContent, ResultInfo.class);
                     Message message = Message.obtain();
                     Bundle bundle = new Bundle();
-                    bundle.putString("code",resultInfo.getCode());
-                    bundle.putString("message",resultInfo.getMessage());
+                    bundle.putString("code", resultInfo.getCode());
+                    bundle.putString("message", resultInfo.getMessage());
                     message.what = MSG_DATA_COMMIT;
                     message.setData(bundle);
                     mHandler.sendMessage(message);
